@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { searchWinePairings } from '../util/winePairing'
 import styles from '../styles/search.module.css'
-
+import { withIronSessionSsr } from "iron-session/next";
 
 export async function getServerSideProps({query:{q}}) {
   

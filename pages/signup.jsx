@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
+import { withIronSessionSsr } from "iron-session/next";
 
 export default function Signup(props) {
   const router = useRouter();

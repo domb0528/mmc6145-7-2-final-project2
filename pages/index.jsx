@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/home.module.css'
+import { withIronSessionSsr } from "iron-session/next";
 
 export default function Home() {
   return (
