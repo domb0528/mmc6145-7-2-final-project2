@@ -58,11 +58,9 @@ export default function Login(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header isLoggedIn={props.isLoggedIn} username={props?.user?.username} />
-
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to the <a href="https://nextjs.org">Next.js</a> Login Page!
+          Welcome to the Calorie Watcher 🏋️‍♂️ Login Page!
         </h1>
 
         <p className={styles.description}>
