@@ -1,16 +1,34 @@
-import styles from './style.module.css'
-import Link from 'next/link'
+import styles from "./style.module.css";
+import Link from "next/link";
+import useLogout from "../../hooks/useLogout";
 
-export default function Header() {
+export default function Header(props) {
+  const logout = useLogout();
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <Link href="/" className={styles.logo}>Calorie Watcher 🏋️‍♂️ </Link>
-        <Link href="/signup">Signup</Link>
-        <Link href="/login">Login</Link>
-        <Link href="/search">Calorie Input</Link>
-        <Link href="/Favorites">Favorites</Link>
-      </div>
+    <header className={styles.container}>
+      {props.isLoggedIn ? (
+        <>
+          <p>
+            <Link href="/">Home</Link>
+          </p>
+          <div className={styles.container}>
+            <p>Welcome, {props.username}!</p>
+            <p onClick={logout} style={{ cursor: "pointer" }}>
+              Logout
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <p>
+            <Link href="/">Home</Link>
+          </p>
+          <p>
+            <Link href="/login">Login</Link>
+          </p>
+        </>
+      )}
     </header>
-  )
+  );
 }
+
