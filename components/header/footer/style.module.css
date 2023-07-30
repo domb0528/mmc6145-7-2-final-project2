@@ -1,0 +1,7 @@
+.footer {
+  margin-top: auto;
+  margin-bottom: calc(var(--space) * 8);
+  padding-top: calc(var(--space) * 8);
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
