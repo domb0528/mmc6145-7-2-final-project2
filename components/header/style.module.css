@@ -2,7 +2,7 @@
   box-shadow: 0 2px 2px 2px var(--grey);
   padding: calc(var(--space) * 2) 0;
   margin-bottom: calc(var(--space) * 4);
-  font-family: Snell Roundhand;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .container {
