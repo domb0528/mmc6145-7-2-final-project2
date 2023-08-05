@@ -55,7 +55,7 @@ export default function Search({winePairings}) {
         {
         winePairings.map((winePairing, i) => (   
         
-        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.imageUrl} description={winePairing.description} calories={winePairing.calories} carbs={winePairing.carbs} fat={winePairing.fat} protein={winePairing.protein}  />
+        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.image} calories={winePairing.calories} carbs={winePairing.carbs} fat={winePairing.fat} protein={winePairing.protein}  />
         ))}
         
         </section>
@@ -65,17 +65,16 @@ export default function Search({winePairings}) {
   )
 }
 
-function WinePairingPreview({id, title, image, description}) {
+function WinePairingPreview({id, title, image, calories, carbs, protein, fat}) {
   return (
     <div>
     <Link href={'/winePairing/' + id} className={styles.preview}>
       <Image src={image} width="231" height="231" alt={title}/>
       <span>{title}</span>
-      <span>{description}</span>
-      <span>{calorioes}</span>
-      <span>{carbs}</span>
-      <span>{protein}</span>
-      <span>{fat}</span>
+      <span>Calories: {calories}</span>
+      <span>Total Carbs: {carbs}</span>
+      <span>Total Protein: {protein}</span>
+      <span>Total Fat: {fat}</span>
 
     </Link>
     </div>
