@@ -31,17 +31,20 @@ export default function WinePairing({winePairingInfo}) {
 function WinePairingInfo({
   image,
   title,
-  readyInMinutes,
-  instructions,
-  summary,
-  extendedIngredients
+  protein,
+  carbs,
+  calories,
+  fat,
 }) {
   return (
     <main className={styles.container}>
       <h1>{title}</h1>
       <Image src={image} alt={title} className={styles.winePairingImg}/>
       <div className={styles.notes}>
-        <p>Time to Make: {readyInMinutes}min</p>
+        <p>{calories}</p>
+        <p>{carbs}</p>
+        <p>{protein}</p>
+        <p>{fat}</p>
       </div>
       <div className={styles.infoGroup}>
         <div className={styles.description}>

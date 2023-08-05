@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <main>
         <div className={styles.container}>
-          <h1>Welcome to Calorie Watcher 🏋️‍♂️ where you can find the best meals for weight loss</h1>
+          <h1>Welcome to Calorie Watcher 🏋️‍♂️ where you can find the best meals for weight loss! Search for meaals by your nutriant goals.</h1>
           <section className={styles.jumbo}>
             <p>Find a meal plan 🏋️‍♂️</p>
           </section>

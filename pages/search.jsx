@@ -35,10 +35,10 @@ export default function Search({winePairings}) {
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️‍♂️</text></svg>"/>
       </Head>
 
-      <p className={styles.noResults}>Type in your calorie number and the website will populate a meal plan that will allocate all your number of calories.</p>
+      <p className={styles.noResults}>Type in your nutriant goal numbers for calories or carbs etc, and the website will populate a meal recipies with all nutriant information.</p>
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label htmlFor="winePairing-search">Search by keywords:</label>
+        <label htmlFor="winePairing-search">Search by your amount of calories or nutriants values</label>
         <input
           value={query}
           onChange={e => setQuery(e.target.value)}
@@ -55,11 +55,11 @@ export default function Search({winePairings}) {
         {
         winePairings.map((winePairing, i) => (   
         
-        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.imageUrl} description={winePairing.description} />
+        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.imageUrl} description={winePairing.description} calories={winePairing.calories} carbs={winePairing.carbs} fat={winePairing.fat} protein={winePairing.protein}  />
         ))}
         
         </section>
-      : <p className={styles.noResults}>No WinePairings Found!</p>
+      : <p className={styles.noResults}>No meals found!</p>
     }
     </>
   )
@@ -72,6 +72,11 @@ function WinePairingPreview({id, title, image, description}) {
       <Image src={image} width="231" height="231" alt={title}/>
       <span>{title}</span>
       <span>{description}</span>
+      <span>{calorioes}</span>
+      <span>{carbs}</span>
+      <span>{protein}</span>
+      <span>{fat}</span>
+
     </Link>
     </div>
   )
