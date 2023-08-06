@@ -68,7 +68,7 @@ export default function Search({winePairings}) {
 function WinePairingPreview({id, title, image, calories, carbs, protein, fat}) {
   return (
     <div>
-    <Link href={'/winePairing/' + id} className={styles.preview}>
+    <Link href={'/favorites/'} className={styles.preview}>
       <Image src={image} width="231" height="231" alt={title}/>
       <span>{title}</span>
       <span>Calories: {calories}</span>
