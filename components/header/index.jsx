@@ -9,7 +9,6 @@ export default function Header(props) {
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>Calorie Watcher 🏋️‍♂️ </Link>
       <Link href="/login">Login</Link>
-      <Link href="/favorites">Favorites</Link>
       <Link href="/signup">Sign Up</Link>
       <Link href="/search">Search</Link>
     </div>
