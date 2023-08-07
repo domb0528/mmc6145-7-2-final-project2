@@ -20,7 +20,7 @@ export default function Home(props) {
           <section className={styles.jumbo}>
             <ul>
               <li>
-                favorites go here
+                Favorites go here
               </li>
             </ul>
           </section>

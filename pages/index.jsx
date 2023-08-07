@@ -14,7 +14,7 @@ export default function Home() {
       <Header/>
       <main>
         <div className={styles.container}>
-          <h1>Welcome to Calorie Watcher 🏋️‍♂️ where you can find the best meals for weight loss! Search for meaals by your nutriant goals.</h1>
+          <h1>Welcome to Calorie Watcher 🏋️‍♂️ where you can find the best meals for weight loss! Search for meals by your nutrient goals.</h1>
         </div>
         <section className={styles.goSearch}>
           <p></p>
