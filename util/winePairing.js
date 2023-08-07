@@ -10,7 +10,7 @@ export async function getWinePairing(id) {
 
 export async function searchWinePairings(query) {
 
-  const response = await fetch(`https://api.spoonacular.com/recipes/findByNutrients?maxCalories=${query}&number=20&apiKey=afb3f661343b437f8d72e45c372ff95a`)
+  const response = await fetch(`https://api.spoonacular.com/recipes/findByNutrients?maxCalories=${query}&number=20&apiKey=a68f60ca41a34d0da1a841af84f31945`)
   if (response.status !== 200)
     return null
   const data = await response.json()
