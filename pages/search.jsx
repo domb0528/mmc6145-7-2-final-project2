@@ -72,7 +72,7 @@ export default function Search({winePairings, isLoggedIn}) {
         {
         winePairings.map((winePairing, i) => (   
         
-        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.image} calories={winePairing.calories} carbs={winePairing.carbs} fat={winePairing.fat} protein={winePairing.protein} addToFavorites={winePairing.addToFavorites} removeFromFavorites={winePairing.removeFromFavorites}    />
+        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.image} calories={winePairing.calories} carbs={winePairing.carbs} fat={winePairing.fat} protein={winePairing.protein}  />
         ))}
         
         </section>
@@ -82,61 +82,18 @@ export default function Search({winePairings, isLoggedIn}) {
   )
 }
 
-async function addToFavorites(WinePairingPreview) {
-  // TODO: use fetch to call POST /api/book
-  // Be sure to pass book in body (use JSON.stringify)
-  // Call router.replace(router.asPath) if you receive a 200 status
-  console.log
-
-  const res = await fetch('/util/winePairing', {
-    method:'POST', 
-    body: JSON.stringify({WinePairingPreview})
-  })
-  if (res.status === 200) {
-    console.log(await res.json())
-    console.log(res)
-    router.replace(router.asPath)
-  }
-
-
-}
-async function removeFromFavorites(WinePairingPreview) {
-  // TODO: use fetch to call DELETE /api/book
-  // Be sure to pass {id: <book id>} in body (use JSON.stringify)
-  // Call router.replace(router.asPath) if you receive a 200 status
-
-  const res = await fetch('/util/winePairing', {
-    method: 'DELETE', 
-    body: JSON.stringify({WinePairingPreview}),
-  })
-   // Call router.replace(router.asPath) if you receive a 200 status
-  if (res.status === 200) {
-  
-    router.replace(router.asPath)
-  }
-
-
-}
-
-
-
-function WinePairingPreview({id, title, image, calories, carbs, protein, fat, addToFavorites}) {
+function WinePairingPreview({id, title, image, calories, carbs, protein, fat}) {
   return (
-    <div className={styles.preview}>
+    <div>
+    <Link href={'/favorites/'} className={styles.preview}>
       <Image src={image} width="231" height="231" alt={title}/>
       <span>{title}</span>
       <span>Calories: {calories}</span>
       <span>Total Carbs: {carbs}</span>
       <span>Total Protein: {protein}</span>
       <span>Total Fat: {fat}</span>
-      
-      <Link href={'favorites'}>
-      <button onClick={addToFavorites}>
-                  Add to Favorites
-                </button></Link>
-      <button onClick={removeFromFavorites}>
-                  Remove from Favorites
-                </button>
+
+    </Link>
     </div>
   )
 }
