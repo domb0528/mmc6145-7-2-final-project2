@@ -43,7 +43,7 @@ export default function Login(props) {
         },
         body: JSON.stringify({ username, password }),
       });
-      if (res.status === 200) return router.push("/search");
+      if (res.status === 200) return router.push("/favorites");
       const { error: message } = await res.json();
       setError(message);
     } catch (err) {
@@ -52,12 +52,9 @@ export default function Login(props) {
   }
   return (
     <div className={styles.container}>
+      <Header isLoggedIn={props.isLoggedIn} />
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to the Calorie Watcher 🏋️‍♂️ Login Page!
-        </h1>
-
         <p className={styles.description}>
           Current Location: <code className={styles.code}>{router.asPath}</code>
           <br />
