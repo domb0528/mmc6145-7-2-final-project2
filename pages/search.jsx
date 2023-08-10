@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { searchWinePairings } from '../util/winePairing'
+import { searchFoods } from '../util/food'
 import styles from '../styles/search.module.css'
 import Header from "../components/header";
 import { withIronSessionSsr } from "iron-session/next";
@@ -15,26 +15,73 @@ export const getServerSideProps = withIronSessionSsr(
     const { user } = req.session;
     const props = {};
     if (user) {
+      console.log(props.user)
       props.user = req.session.user;
     }
     props.isLoggedIn = !!user;
-    props.winePairings = await searchWinePairings(query.q)
+    props.foods = await searchFoods(query.q)
     return { props };
   },
   sessionOptions
 );
+
+async function addToFavorites(id,title,image,calories,carbs,protein,fat) {
+  // TODO: use fetch to call POST /api/food
+  // Be sure to pass food in body (use JSON.stringify)
+  // Call router.replace(router.asPath) if you receive a 200 status
+  console.log(id, title, calories, carbs)
+
+    let foodInfo = {
+      "id" : id,
+      "title" : title,
+      "image" : image,
+      "calories" : calories,
+      "carbs" :carbs,
+      "protein" : protein,
+      "fat" : fat
+    }
+      
+    const res = await fetch('/api/food', {
+      method:'POST', 
+      body: JSON.stringify(foodInfo)
+    })
+    if (res.status === 200) {
+      console.log(await res.json())
+      console.log(res)
+      router.replace(router.asPath)
+    }
+
+
+};
+async function removeFromFavorites(FoodPreview) {
+  // TODO: use fetch to call DELETE /api/food
+  // Be sure to pass {id: <food id>} in body (use JSON.stringify)
+  // Call router.replace(router.asPath) if you receive a 200 status
+
+  const res = await fetch('/util/food', {
+    method: 'DELETE', 
+    body: JSON.stringify({FoodPreview}),
+  })
+   // Call router.replace(router.asPath) if you receive a 200 status
+  if (res.status === 200) {
+  
+    router.replace(router.asPath)
+  }
+
+
+};
 
 export async function getServerSideProps1({query:{q}}) {
   
   const props = {}
   if (!q) return{props}
 
-  props.winePairings = await searchWinePairings(q)
+  props.foods = await searchFoods(q)
   console.log(props)
   return {props}
 }
 
-export default function Search({winePairings, isLoggedIn}) {
+export default function Search({foods, isLoggedIn}) {
   const router = useRouter()
   const [query, setQuery] = useState("")
 
@@ -55,24 +102,24 @@ export default function Search({winePairings, isLoggedIn}) {
       <p className={styles.noResults}>Type in your nutriant goal numbers for calories or carbs etc, and the website will populate a meal recipies with all nutriant information.</p>
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label htmlFor="winePairing-search">Search by your amount of calories or nutriants values</label>
+        <label htmlFor="food-search">Search by your amount of calories or nutriants values</label>
         <input
           value={query}
           onChange={e => setQuery(e.target.value)}
           type="text"
-          name="winePairing-search"
-          id="winePairing-search" autoFocus/>
+          name="food-search"
+          id="food-search" autoFocus/>
         <button type="submit">Submit</button>
       </form>
       {
-        winePairings?.length
+        foods?.length
         ? <section className={styles.results}>
       
         
         {
-        winePairings.map((winePairing, i) => (   
+        foods.map((food, i) => (   
         
-        <WinePairingPreview key={i} id={winePairing.id} title={winePairing.title} image={winePairing.image} calories={winePairing.calories} carbs={winePairing.carbs} fat={winePairing.fat} protein={winePairing.protein} addToFavorites={winePairing.addToFavorites} removeFromFavorites={winePairing.removeFromFavorites}    />
+        <FoodPreview key={i} id={food.id} title={food.title} image={food.image} calories={food.calories} carbs={food.carbs} fat={food.fat} protein={food.protein} addToFavorites={food.addToFavorites} removeFromFavorites={food.removeFromFavorites}    />
         ))}
         
         </section>
@@ -82,46 +129,10 @@ export default function Search({winePairings, isLoggedIn}) {
   )
 }
 
-async function addToFavorites(WinePairingPreview) {
-  // TODO: use fetch to call POST /api/book
-  // Be sure to pass book in body (use JSON.stringify)
-  // Call router.replace(router.asPath) if you receive a 200 status
-  console.log
 
-  const res = await fetch('/util/winePairing', {
-    method:'POST', 
-    body: JSON.stringify({WinePairingPreview})
-  })
-  if (res.status === 200) {
-    console.log(await res.json())
-    console.log(res)
-    router.replace(router.asPath)
-  }
-
-
-}
-async function removeFromFavorites(WinePairingPreview) {
-  // TODO: use fetch to call DELETE /api/book
-  // Be sure to pass {id: <book id>} in body (use JSON.stringify)
-  // Call router.replace(router.asPath) if you receive a 200 status
-
-  const res = await fetch('/util/winePairing', {
-    method: 'DELETE', 
-    body: JSON.stringify({WinePairingPreview}),
-  })
-   // Call router.replace(router.asPath) if you receive a 200 status
-  if (res.status === 200) {
-  
-    router.replace(router.asPath)
-  }
-
-
-}
-
-
-
-function WinePairingPreview({id, title, image, calories, carbs, protein, fat, addToFavorites}) {
+function FoodPreview({id, title, image, calories, carbs, protein, fat}) {
   return (
+    
     <div className={styles.preview}>
       <Image src={image} width="231" height="231" alt={title}/>
       <span>{title}</span>
@@ -130,8 +141,8 @@ function WinePairingPreview({id, title, image, calories, carbs, protein, fat, ad
       <span>Total Protein: {protein}</span>
       <span>Total Fat: {fat}</span>
       
-      <Link href={'favorites'}>
-      <button onClick={addToFavorites}>
+      <Link href={'/favorites'}>
+      <button onClick={()=>{addToFavorites(id,title,image,calories,carbs,protein,fat)}}>
                   Add to Favorites
                 </button></Link>
       <button onClick={removeFromFavorites}>
