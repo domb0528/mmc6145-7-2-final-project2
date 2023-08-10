@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getFood } from '../../util/food'
-import styles from '../../styles/food.module.css'
+import styles from '../../styles/food.css'
 
 export async function getServerSideProps({params: {id}}) {
 

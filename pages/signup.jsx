@@ -96,10 +96,9 @@ export default function Signup(props) {
             onChange={handleChange}
             value={confirmPassword}
           />
-          <Link href="/search">
+          <Link href="/"></Link>
           <button>Submit</button>
           {error && <p>{error}</p>}
-          </Link>
         </form>
         <Link href="/login">
           <p>Login instead?</p>

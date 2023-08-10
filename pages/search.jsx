@@ -141,10 +141,11 @@ function FoodPreview({id, title, image, calories, carbs, protein, fat}) {
       <span>Total Protein: {protein}</span>
       <span>Total Fat: {fat}</span>
       
-      <Link href={'/favorites'}>
+      <Link href="/favorites">
       <button onClick={()=>{addToFavorites(id,title,image,calories,carbs,protein,fat)}}>
                   Add to Favorites
-                </button></Link>
+                </button>
+                </Link>
       <button onClick={removeFromFavorites}>
                   Remove from Favorites
                 </button>

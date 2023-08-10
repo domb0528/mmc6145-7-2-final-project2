@@ -9,6 +9,9 @@ export default function Header(props) {
        <div className={styles.container}>
       {props.isLoggedIn ? (
         <>
+        <p>
+          <Link href="/" className={styles.logo}>Calorie Watcher 🏋️‍♂️ </Link>
+          </p>
           <p>
           <Link href="/favorites">Favorites</Link>
           </p>
