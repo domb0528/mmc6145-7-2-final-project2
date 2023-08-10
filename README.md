@@ -50,6 +50,31 @@ This app was developed using the Spoonacular API. All recipe data is fetched fro
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
+## Screenshots
+
+<img width="1440" alt="Screenshot Home Page 2023-08-10 at 4 05 17 PM" src="https://github.com/domb0528/calorie-watcher-birge-dominick/assets/94083462/1ea4f129-3cd2-4cf4-9fa7-2b0102b224fb">
+
+<img width="1440" alt="Screenshot Sign-Up Page 2023-08-10 at 4 12 03 PM" src="https://github.com/domb0528/calorie-watcher-birge-dominick/assets/94083462/305bc93f-aca6-4732-97ce-ad72b4f3f9f4">
+
+<img width="1440" alt="Screenshot Login Page 2023-08-10 at 4 13 20 PM" src="https://github.com/domb0528/calorie-watcher-birge-dominick/assets/94083462/8eebccba-2625-4595-bc54-c883ebf3985e">
+
+<img width="1440" alt="Screenshot Search Page 2023-08-10 at 4 14 20 PM" src="https://github.com/domb0528/calorie-watcher-birge-dominick/assets/94083462/4ac8ad03-e1e6-4f3d-ba23-bc51d30dbf8c">
+
+<img width="1440" alt="Screenshot Search Results 2023-08-10 at 4 14 30 PM" src="https://github.com/domb0528/calorie-watcher-birge-dominick/assets/94083462/87fb1c3f-46f4-47cc-998e-09aeb911f019">
+
+
+<img width="1440" alt="Screenshot Favorites Page 2023-08-10 at 4 14 42 PM" src="https://github.com/domb0528/calorie-watcher-birge-dominick/assets/94083462/6e7642b7-830c-4997-8813-9053bf3477f4">
+
+
+
+
+
+
+
+
+
+
+
 ## Acknowledgments
 
 We would like to thank Spoonacular for providing the API and making this project possible.
